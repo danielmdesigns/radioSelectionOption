@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form Results</title>
+</head>
+
+<body>
+
+<form>
+<input type="radio" name="os" id="test1" value="test1"/>Test #1
+<input type="radio" name="os" id="test2" value="test2"/>Test #2
+</form>
+
+<script type="text/javascript">
+function getParameterByName(name){
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function doAwesomeRadioButtonChecker(){
+	var option = getParameterByName("formOpt");
+	document.getElementById(option).checked="checked";
+	alert(option + " is the link you clicked.");
+}
+
+window.onload = doAwesomeRadioButtonChecker;
+</script>
+</body>
+</html>
